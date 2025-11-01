@@ -1,6 +1,4 @@
 import { state } from "./state.js";
-import { Switcher } from "./ui.js";
-import { Form, Input, Dropdown } from "./classes.js"
 import { switcher } from "./switcher.js";
 import { input } from "./input.js";
 import { dropdown } from "./dropdown.js";
