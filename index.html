@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>🫰 Gestor de Finanzas PRO</title>
+    <script type="module" defer src="./main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">🫰 Gestor de Finanzas</h1>
+        <p class="subtitle">Llevá un control comprensivo de tus finanzas.</p>
+    </header>
+    <main class="main">
+        <div class="switcher_container">
+            <button id="inc_switch_btn" class="switch_btn current">Ingresos</button>
+            <button id="out_switch_btn" class="switch_btn">Gastos</button>
+        </div>
+        <div id="form_incomes_container" class="form_container current">
+            <div class="form_header">
+                <h2 class="form_title">Nuevo Ingreso</h2>
+                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Ingreso</strong> en Google Sheets</p>
+            </div>
+            <form action="" id="income_form" class="form">
+                <div class="input_container">
+                    <label for="desc" class="input_label">Descripción</label>
+                    <input id="inc_desc" type="text" name="desc" class="input" placeholder="ej. Sueldo">
+                </div>
+                <div class="input_container">
+                    <label for="amount" class="input_label">Monto</label>
+                    <input id="inc_amount" type="text" name="amount" class="input" placeholder="$ 0.00">
+                </div>
+                <div class="input_container">
+                    <label for="category" class="input_label">Categoría</label>
+                    <div id="inc_category" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>💸 Sueldo</li>
+                            <li>💉 Tatuajes</li>
+                            <li>🏡 Renders</li>
+                            <li>❓ Otros</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+            <div class="form_footer">
+                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Ingresos</strong> mediante Google App Scripts.</p>
+                <button type="submit" disabled id="income_submit_btn" class="submit_btn">Registrar Ingreso</button>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div id="form_outcomes_container" class="form_container">
+            <div class="form_header">
+                <h2 class="form_title">Nuevo Gasto</h2>
+                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto</strong> en Google Sheets</p>
+            </div>
+            <form action="" id="outcome_form" class="form">
+                <div class="input_container">
+                    <label for="desc" class="input_label">Descripción</label>
+                    <input id="out_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
+                </div>
+                <div class="input_container" id="account_dropdown_container">
+                    <label for="account" class="input_label">Cuenta</label>
+                    <div id="out_account" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="account_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>Gastos Fijos</li>
+                            <li>Libertad Financiera</li>
+                            <li>Largo Plazo</li>
+                            <li>Educación</li>
+                            <li>Ocio</li>
+                            <li>Caridad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input_container">
+                    <label for="amount" class="input_label">Monto</label>
+                    <input id="out_amount" type="text" name="amount" class="input" placeholder="$ 0.00">
+                </div>
+                <div class="input_container">
+                    <label for="category" class="input_label">Categoría</label>
+                    <div id="out_category" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+
+                        <ul class="dropdown_menu">
+                            <li>🍖 Alimentación</li>
+                            <li>🏪 Almacén</li>
+                            <li>🍸 Bar</li>
+                            <li>🍶 Bebidas</li>
+                            <li>🔁 Cambio de cuenta</li>
+                            <li>💌 Caridad</li>
+                            <li>📱 Celular</li>
+                            <li>🧼 Cuidado personal</li>
+                            <li>💸 Dólares</li>
+                            <li>🏛️ Facultad</li>
+                            <li>⚽ Fútbol</li>
+                            <li>💪 Gimnasio</li>
+                            <li>🍬 Golosinas</li>
+                            <li>🍦 Helado</li>
+                            <li>🔫 Impuestos</li>
+                            <li>💉 Insumos tatuajes</li>
+                            <li>🏪 Kiosco</li>
+                            <li>📚 Librería</li>
+                            <li>📖 Libros</li>
+                            <li>⛽ Nafta</li>
+                            <li>❓ Otros</li>
+                            <li>✂️ Peluquería</li>
+                            <li>🎁 Regalos</li>
+                            <li>🍽️ Restaurant</li>
+                            <li>👕 Ropa</li>
+                            <li>▶️ Suscripciones</li>
+                            <li>💳 Tarjeta de crédito</li>
+                            <li>🚌 Transporte</li>
+                            <li>🏖️ Vacaciones</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+            <div class="form_footer">
+                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Ingresos</strong> mediante Google App Scripts.</p>
+                <button type="submit" id="outcome_submit_btn" class="submit_btn">Registrar Gasto</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
