@@ -4,7 +4,7 @@ import { input } from "./input.js";
 import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzGInF-LjsL5xGgM66nU9HLV65Sd4AVlknfBhk7X3eAdvPHp5cRHFfXgHci0yHZPtNuKg/exec"
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGghGMxmWfqG3wd-tokevYw0oRxEfJTUUmjuTSYY0DiVudrT9I1zjxhIgEqnARTK9U9Q/exec"
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { desc, amount, category } = state.getState().forms.incomes.form
         const formData = {
             desc,
-            amount,
+            amount: parseFloat(amount),
             category
         }
         
@@ -52,7 +52,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const onSubmitOut = () => console.log(state.getState().forms.outcomes.form);
     submitButton("outcome_submit_btn", onSubmitOut);
 
-    state.subscribe(()=>{
-        console.log(state.getState());
-    })
 })
