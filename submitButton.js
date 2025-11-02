@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 
-export function submitButton(id, onSubmit) {
+export function submitButton(id, onSubmit, transaction) {
     const buttonEl = document.getElementById(id)
     const loadingSpan = document.createElement("span")
     loadingSpan.className = "loading";
@@ -16,13 +16,13 @@ export function submitButton(id, onSubmit) {
 
         if(!full) {
             buttonEl.disabled = true;
-            buttonEl.textContent = "Registrar Ingreso"
+            buttonEl.textContent = `Registrar ${transaction}`
         } else if(full && currentState.loading) {
-            buttonEl.textContent = "Registrando Ingreso"
+            buttonEl.textContent = `Registrando ${transaction}`
             buttonEl.disabled = true;
             buttonEl.appendChild(loadingSpan);
         } else {
-            buttonEl.textContent = "Registrar Ingreso"
+            buttonEl.textContent = `Registrar ${transaction}`
             buttonEl.disabled = false;
         }
     }

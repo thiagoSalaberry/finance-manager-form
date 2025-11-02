@@ -5,7 +5,7 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwu9oG8btuOI2zWKk2olJqt4rA_0q8NQJKDaoRLXTvtlDjH7KbX9vHC4NxmuPzBBvQVfQ/exec"
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwgvH1_o9nk_SJCpy26do-w0htx8OaSIQ59h1ZLsR0sCIFlUMU07BmKVjOSYAVwSup9DQ/exec"
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const numericAmount = parseFloat(amount.replace('.', ',')); 
         const formData = new URLSearchParams()
+        formData.append("type", "income");
         formData.append("desc", desc);
         formData.append("amount", numericAmount);
         formData.append("category", category);
@@ -78,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             })
     };
-    submitButton("income_submit_btn", onSubmitInc);
-    errorMessage("inc_result_p")
+    submitButton("income_submit_btn", onSubmitInc, "Ingreso");
+    errorMessage("inc_result_p", "Ingreso");
 
     // Outcomes
     input("out_desc");
@@ -87,6 +88,65 @@ document.addEventListener("DOMContentLoaded", () => {
     input("out_amount");
     dropdown("out_category", "category");
 
-    const onSubmitOut = () => console.log(state.getState().forms.outcomes.form);
-    submitButton("outcome_submit_btn", onSubmitOut);
+    const onSubmitOut = () => {
+        const currentState = state.getState();
+        const { desc, account, amount, category } = currentState.forms.outcomes.form;
+
+        if(!desc || !account || !amount || !category) return;
+
+        const numericAmount = parseFloat(amount.replace('.', ','))
+        const formData = new URLSearchParams();
+        formData.append("type", "outcome");
+        formData.append("desc", desc);
+        formData.append("account", account);
+        formData.append("amount", numericAmount);
+        formData.append("category", category);
+
+        state.setState({
+            ...currentState,
+            loading: true,
+            result: null,
+            errorMessage: ""
+        })
+
+        fetch(SCRIPT_URL, {method: "POST", body: formData})
+            .then(res => res.json())
+            .then(data => {
+                const newState = state.getState();
+
+                if(data.result == "success") {
+                    state.setState({
+                        ...newState,
+                        result: "success",
+                        loading: false
+                    })
+                } else {
+                    state.setState({
+                        ...state.getState(),
+                        forms: {
+                            ...state.getState().forms,
+                            outcomes: {
+                                form: {
+                                    desc: "",
+                                    account: "",
+                                    amount: "",
+                                    category: ""
+                                }
+                            },
+                            loading: false
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                state.setState({
+                    ...currentState,
+                    result: "error",
+                    errorMessage: "❌ Ocurrió un error al registrar el Gasto: " + error.message,
+                    loading: false
+                })
+            })
+    };
+    submitButton("outcome_submit_btn", onSubmitOut, "Gasto");
+    errorMessage("out_result_p", "Gasto")
 })

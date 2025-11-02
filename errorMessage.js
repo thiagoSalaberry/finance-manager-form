@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 
-export function errorMessage(id) {
+export function errorMessage(id, transaction) {
     const pEl = document.getElementById(id)
     let timeoutId = null;
 
@@ -11,7 +11,7 @@ export function errorMessage(id) {
 
         if(currentState.result == "success") {
             pEl.classList.add("success");
-            pEl.textContent = "¡✅ Ingreso registrado con éxito!"
+            pEl.textContent = `¡✅ ${transaction} registrado con éxito!`
             timeoutId = setTimeout(() => {
                 pEl.classList.remove("success");
                 state.setState({ ...state.getState(), result: null })
