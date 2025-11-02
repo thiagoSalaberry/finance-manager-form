@@ -4,7 +4,7 @@ import { input } from "./input.js";
 import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGghGMxmWfqG3wd-tokevYw0oRxEfJTUUmjuTSYY0DiVudrT9I1zjxhIgEqnARTK9U9Q/exec"
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwu9oG8btuOI2zWKk2olJqt4rA_0q8NQJKDaoRLXTvtlDjH7KbX9vHC4NxmuPzBBvQVfQ/exec"
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -16,18 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const onSubmitInc = () => {
         const { desc, amount, category } = state.getState().forms.incomes.form
-        const formData = {
-            desc,
-            amount: parseFloat(amount),
-            category
-        }
+        const numericAmount = parseFloat(amount.replace('.', ',')); 
+        const formData = new URLSearchParams()
+        formData.append("desc", desc);
+        formData.append("amount", numericAmount);
+        formData.append("category", category);
         
         fetch(SCRIPT_URL, {
             method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json"
-            }
+            body: formData
         })
             .then(res => res.json())
             .then(data => {
