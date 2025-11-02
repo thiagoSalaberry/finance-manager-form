@@ -5,6 +5,22 @@ export function dropdown(id, field) {
     const button = dropdownEl.querySelector(".dropdown_btn")
     const menu = dropdownEl.querySelector(".dropdown_menu")
     const label = dropdownEl.querySelector(".dropdown_label")
+    const ogLabel = label.textContent;
+
+    function updateDropdownState() {
+        const currentState = state.getState();
+        if (currentState.loading) {
+            button.classList.add("disabled")
+        } else {
+            button.classList.remove("disabled")
+        }
+        if(currentState.result == "success") {
+            label.classList.remove("valued");
+            label.textContent = ogLabel;
+        }
+    }
+    updateDropdownState();
+    state.subscribe(updateDropdownState)
 
     button.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -16,12 +32,14 @@ export function dropdown(id, field) {
 
         menu.classList.toggle("up", spaceBelow < menuMaxHeight && spaceAbove > spaceBelow);
         menu.classList.toggle("active");
+        button.classList.toggle("opened")
     });
 
     menu.querySelectorAll("li").forEach(li => {
         li.addEventListener("click", () => {
             const value = li.textContent.trim();
             label.textContent = value;
+            label.classList.add("valued");
             menu.classList.remove("active");
 
             const currentState = state.getState();
@@ -42,5 +60,8 @@ export function dropdown(id, field) {
         })
     })
 
-    window.addEventListener("click", () => menu.classList.remove("active"));
+    window.addEventListener("click", () => {
+        menu.classList.remove("active")
+        button.classList.remove("opened")
+    });
 }

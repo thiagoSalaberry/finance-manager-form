@@ -17,7 +17,10 @@ export const state = {
                     category: ""
                 }
             }
-        }
+        },
+        loading: false,
+        result: null, // "succes" o "error"
+        errorMessage: ""
     },
     listeners: [],
     getState() {
