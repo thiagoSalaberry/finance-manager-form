@@ -5,7 +5,7 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjtYrRO2qY90fV7Ntwq6CcotmjwV6YMsEzxdXjMkRzz37rPHBjpkjF_hQqEAm6tyM63g/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZKnffnWdLWeBA7WVC1c61u_gTtTOIeo79lJNR59KPZRq83SAuK99Iw7FOr60WX9RpMQ/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
     
