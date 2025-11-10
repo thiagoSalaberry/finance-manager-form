@@ -5,7 +5,7 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzjMQckIAZ54hXbAEkV7l-Mk6aejOBXmmA64-VlqDCZA6roHdJfjmGPHVcIGznS-EGTw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjtYrRO2qY90fV7Ntwq6CcotmjwV6YMsEzxdXjMkRzz37rPHBjpkjF_hQqEAm6tyM63g/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -149,4 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     submitButton("outcome_submit_btn", onSubmitOut, "Gasto");
     errorMessage("out_result_p", "Gasto")
+
+    // Transfers
+    dropdown("tra_source_account", "sourceAccount")
+    dropdown("tra_dest_account", "destAccount")
+    input("tra_desc")
+    input("tra_amount")
+    submitButton("transfers_submit_btn", () => {}, "Transferencia");
 })

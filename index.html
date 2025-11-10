@@ -18,8 +18,10 @@
     </header>
     <main class="main">
         <div class="switcher_container">
+            <button id="accs_switch_btn" class="switch_btn">Cuentas</button>
             <button id="inc_switch_btn" class="switch_btn current">Ingresos</button>
             <button id="out_switch_btn" class="switch_btn">Gastos</button>
+            <button id="tra_switch_btn" class="switch_btn">Transferencias</button>
         </div>
         <div id="form_incomes_container" class="form_container current">
             <div class="form_header">
@@ -92,7 +94,7 @@
                 </div>
                 <div class="input_container">
                     <label for="amount" class="input_label">Monto</label>
-                    <input id="out_amount" type="text" name="amount" class="input" placeholder="$ 0.00">
+                    <input id="out_amount" type="number" name="amount" class="input" placeholder="$ 0.00">
                 </div>
                 <div class="input_container">
                     <label for="category" class="input_label">Categoría</label>
@@ -137,8 +139,67 @@
                 </div>
             </form>
             <div class="form_footer">
-                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Ingresos</strong> mediante Google App Scripts.</p>
+                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Gastos</strong> mediante Google App Scripts.</p>
                 <button type="submit" id="outcome_submit_btn" class="submit_btn">Registrar Gasto</button>
+                <p id="out_result_p" class="result_p"></p>
+            </div>
+        </div>
+
+
+
+
+        <div id="form_transfers_container" class="form_container">
+            <div class="form_header">
+                <h2 class="form_title">Nueva Transferencia</h2>
+                <p class="form_desc">Completá el formulario para cargar una nueva <strong>Transferencia</strong> en Google Sheets</p>
+            </div>
+            <form action="" id="transfers_form" class="form">
+                <div class="input_container" id="account_dropdown_container">
+                    <label for="account" class="input_label">Cuenta origen</label>
+                    <div id="tra_source_account" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="tra_source_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>Gastos Fijos</li>
+                            <li>Libertad Financiera</li>
+                            <li>Largo Plazo</li>
+                            <li>Educación</li>
+                            <li>Ocio</li>
+                            <li>Caridad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input_container" id="account_dropdown_container">
+                    <label for="account" class="input_label">Cuenta destino</label>
+                    <div id="tra_dest_account" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="tra_dest_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>Gastos Fijos</li>
+                            <li>Libertad Financiera</li>
+                            <li>Largo Plazo</li>
+                            <li>Educación</li>
+                            <li>Ocio</li>
+                            <li>Caridad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input_container">
+                    <label for="desc" class="input_label">Descripción</label>
+                    <input id="tra_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
+                </div>
+                <div class="input_container">
+                    <label for="amount" class="input_label">Monto</label>
+                    <input id="tra_amount" type="text" name="amount" class="input" placeholder="$ 0.00">
+                </div>
+            </form>
+            <div class="form_footer">
+                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Transferencia</strong> mediante Google App Scripts.</p>
+                <button type="submit" id="transfers_submit_btn" class="submit_btn">Registrar Transferencia</button>
                 <p id="out_result_p" class="result_p"></p>
             </div>
         </div>
