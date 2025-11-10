@@ -151,9 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
     errorMessage("out_result_p", "Gasto")
 
     // Transfers
-    dropdown("tra_source_account", "sourceAccount")
-    dropdown("tra_dest_account", "destAccount")
-    input("tra_desc")
-    input("tra_amount")
-    submitButton("transfers_submit_btn", () => {}, "Transferencia");
+    // dropdown("tra_source_account", "sourceAccount")
+    // dropdown("tra_dest_account", "destAccount")
+    // input("tra_desc")
+    // input("tra_amount")
+    // submitButton("transfers_submit_btn", () => {}, "Transferencia");
 })
