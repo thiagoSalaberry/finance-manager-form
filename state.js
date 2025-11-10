@@ -16,6 +16,14 @@ export const state = {
                     amount: null,
                     category: ""
                 }
+            },
+            transfers: {
+                form: {
+                    source: "",
+                    dest: "",
+                    desc: "",
+                    amount: null,
+                }
             }
         },
         loading: false,

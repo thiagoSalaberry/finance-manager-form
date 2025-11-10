@@ -5,12 +5,14 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZKnffnWdLWeBA7WVC1c61u_gTtTOIeo79lJNR59KPZRq83SAuK99Iw7FOr60WX9RpMQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywW5URMe8sqZ1U1p1Bv6eK-phQ7R7g_Ji6Zf_vp25vR3cZglxMP9nbpxJfH2urOanGTA/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Incomes
+    lucide.createIcons();
+
     switcher();
+
+    // Incomes
     input("inc_desc"); 
     input("inc_amount"); 
     dropdown("inc_category", "category");
@@ -151,9 +153,71 @@ document.addEventListener("DOMContentLoaded", () => {
     errorMessage("out_result_p", "Gasto")
 
     // Transfers
-    // dropdown("tra_source_account", "sourceAccount")
-    // dropdown("tra_dest_account", "destAccount")
-    // input("tra_desc")
-    // input("tra_amount")
-    // submitButton("transfers_submit_btn", () => {}, "Transferencia");
+    dropdown("tra_source_account", "source")
+    dropdown("tra_dest_account", "dest")
+    input("tra_desc")
+    input("tra_amount")
+    const onSubmitTra = () => {
+        const currentState = state.getState();
+        const { source, dest, desc, amount } = currentState.forms.transfers.form;
+
+        if(!source || !dest || !desc || !amount) return;
+
+        const numericAmount = parseFloat(amount.replace('.', ','));
+        const formData = new URLSearchParams();
+        formData.append("type", "transfer");
+        formData.append("source", source);
+        formData.append("dest", dest);
+        formData.append("desc", desc);
+        formData.append("amount", amount);
+        
+        state.setState({
+            ...currentState,
+            loading: true,
+            result: null,
+            errorMessage: ""
+        })
+
+        fetch(SCRIPT_URL, { method: "POST", body: formData })
+            .then(res => res.json())
+            .then(data => {
+                const newState = state.getState();
+
+                if(data.result == "success") {
+                    state.setState({
+                        ...newState,
+                        result: "success",
+                        loading: false
+                    })
+                } else {
+                    state.setState({
+                        ...state.getState(),
+                        forms: {
+                            ...state.getState().forms,
+                            transfers: {
+                                form: {
+                                    source: "",
+                                    dest: "",
+                                    desc: "",
+                                    amount: ""
+                                }
+                            },
+                            loading: false
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                state.setState({
+                    ...currentState,
+                    result: "error",
+                    errorMessage: "❌ Ocurrió un error al registrar la Transferencia: " + error.message,
+                    loading: false
+                })
+            })
+    }
+    submitButton("transfers_submit_btn", onSubmitTra, "Transferencia");
+    errorMessage("tra_result_p", "Transferencia")
+
+    // state.subscribe(()=>console.log(state.getState()))
 })
