@@ -4,6 +4,7 @@ import { input } from "./input.js";
 import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
+import { reproducirAudio } from "./audios.js";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywW5URMe8sqZ1U1p1Bv6eK-phQ7R7g_Ji6Zf_vp25vR3cZglxMP9nbpxJfH2urOanGTA/exec";
 
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         result: "success",
                         loading: false
                     });
+                    reproducirAudio("ingreso")
                 } else {
                     state.setState({
                         ...newState,
@@ -122,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         result: "success",
                         loading: false
                     })
+                    reproducirAudio("gasto")
                 } else {
                     state.setState({
                         ...state.getState(),
