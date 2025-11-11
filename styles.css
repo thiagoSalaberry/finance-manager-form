@@ -28,7 +28,7 @@ body {
     grid-template-rows: auto 1fr auto;
     height: 100dvh;
     color: var(--text);
-    position: relative;
+    /* position: relative; */
 }
 
 .header {
@@ -42,19 +42,22 @@ body {
 }
 .title {
     font-family: "Domine";
+    text-align: center;
 }
 .subtitle {
     color: var(--text-light);
+    text-align: center;
 }
 .main {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
+    /* max-height: 100%; */
+    /* overflow-y: auto;
+    scrollbar-width: none; */
     padding: 20px;
+    padding-bottom: 83px;
 
 }
 .switcher_container {
@@ -335,8 +338,11 @@ body {
     bottom: 20px;
     left: 20px;
     right: 20px; */
-    padding: 20px;
-    padding-top: 0;
+    padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    /* left: 10px; */
 }
 .navbar {
     width: 100%;
@@ -349,7 +355,7 @@ body {
 }
 .link_icon {
     width: 100%;
-    padding: 10px;
+    padding: 6px;
     border: none;
     border-radius: 10px;
     color: var(--text-light);
