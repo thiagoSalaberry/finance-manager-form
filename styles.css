@@ -43,10 +43,12 @@ body {
 .title {
     font-family: "Domine";
     text-align: center;
+    font-size: 28px;
 }
 .subtitle {
     color: var(--text-light);
     text-align: center;
+    font-size: 14px;
 }
 .main {
     display: flex;
