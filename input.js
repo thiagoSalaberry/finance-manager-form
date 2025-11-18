@@ -16,6 +16,20 @@ export function input(id) {
     inputEl.addEventListener("input", (e) => {
         const currentState = state.getState();
         const current = currentState.current;
+        
+        let value = e.target.value;
+        let rawValue = value;
+
+        if(inputEl.id.includes("amount")) {
+            rawValue = value.replace(/\D/g, "");
+
+            const formatted = rawValue
+                ? "$ " + rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                : "";
+
+            inputEl.value = formatted;
+        }
+
         state.setState({
             ...currentState,
             forms: {
@@ -23,7 +37,7 @@ export function input(id) {
                 [current]: {
                     form: {
                         ...currentState.forms[current].form,
-                        [inputEl.name]: e.target.value
+                        [inputEl.name]: rawValue
                     }
                 }
             }

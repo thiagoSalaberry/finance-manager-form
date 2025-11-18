@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!desc || !amount || !category) return;
 
-        const numericAmount = parseFloat(amount.replace('.', ',')); 
+        const numericAmount = parseFloat(amount.replace("$ ", "").replace('.', ',')); 
         const formData = new URLSearchParams()
         formData.append("type", "income");
         formData.append("desc", desc);
