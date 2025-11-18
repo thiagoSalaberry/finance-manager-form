@@ -5,6 +5,7 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { errorMessage } from "./errorMessage.js";
 import { reproducirAudio } from "./audios.js";
+import { showToast } from "./toast.js";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywW5URMe8sqZ1U1p1Bv6eK-phQ7R7g_Ji6Zf_vp25vR3cZglxMP9nbpxJfH2urOanGTA/exec";
 
@@ -49,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         result: "success",
                         loading: false
                     });
+
+                    showToast("income", numericAmount, category);
+
                     reproducirAudio("ingreso")
                 } else {
                     state.setState({
@@ -84,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
     };
     submitButton("income_submit_btn", onSubmitInc, "Ingreso");
-    errorMessage("inc_result_p", "Ingreso");
+    // errorMessage("inc_result_p", "Ingreso");
 
     // Outcomes
     input("out_desc");
@@ -124,6 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         result: "success",
                         loading: false
                     })
+                    
+                    showToast("outcome", numericAmount, category);
+
                     reproducirAudio("gasto")
                 } else {
                     state.setState({
@@ -153,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
     };
     submitButton("outcome_submit_btn", onSubmitOut, "Gasto");
-    errorMessage("out_result_p", "Gasto")
+    // errorMessage("out_result_p", "Gasto")
 
     // Transfers
     dropdown("tra_source_account", "source")
@@ -220,7 +227,5 @@ document.addEventListener("DOMContentLoaded", () => {
             })
     }
     submitButton("transfers_submit_btn", onSubmitTra, "Transferencia");
-    errorMessage("tra_result_p", "Transferencia")
-
-    // state.subscribe(()=>console.log(state.getState()))
+    // errorMessage("tra_result_p", "Transferencia")
 })
