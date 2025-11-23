@@ -32,6 +32,9 @@ export function enableSwipe() {
         if (diff < 0 && index > 0) {
             changeForm(order[index - 1])
         }
+
+        startX = 0;
+        endX = 0
     })
 }
 

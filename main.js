@@ -5,12 +5,10 @@ import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
 import { reproducirAudio } from "./audios.js";
 import { showToast } from "./toast.js";
-import { enableSwipe } from "./gestureSwitcher.js";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUXgvO8WyJRzuBibpkbgYa2nSOjE6iwtCVLWr3iBsxfsIRLj7Opkniqg7mVikAnRjokg/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // enableSwipe();
     lucide.createIcons();
 
     switcher();
