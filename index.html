@@ -18,236 +18,238 @@
         <p class="subtitle">Llevá un control comprensivo de tus finanzas.</p>
     </header>
     <main class="main">
-        <div id="form_incomes_container" class="form_container current">
-            <div class="form_header">
-                <h2 class="form_title">Nuevo Ingreso</h2>
-                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Ingreso</strong> en Google Sheets</p>
-            </div>
-            <form action="" id="income_form" class="form">
-                <div class="input_container">
-                    <label for="desc" class="input_label">Descripción</label>
-                    <input id="inc_desc" type="text" name="desc" class="input" placeholder="ej. Sueldo">
+        <div class="forms_track">
+            <div id="form_incomes_container" class="form_container current">
+                <div class="form_header">
+                    <h2 class="form_title">Nuevo Ingreso</h2>
+                    <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Ingreso</strong> en Google Sheets</p>
                 </div>
-                <div class="input_container">
-                    <label for="amount" class="input_label">Monto</label>
-                    <input id="inc_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
-                </div>
-                <div class="input_container">
-                    <label for="category" class="input_label">Categoría</label>
-                    <div id="inc_category" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
-                            <span class="dropdown_icon">👇</span>
-                        </div>
-                        <ul class="dropdown_menu">
-                            <li>💸 Sueldo</li>
-                            <li>💉 Tatuajes</li>
-                            <li>🏡 Renders</li>
-                            <li>❓ Otros</li>
-                        </ul>
+                <form action="" id="income_form" class="form">
+                    <div class="input_container">
+                        <label for="desc" class="input_label">Descripción</label>
+                        <input id="inc_desc" type="text" name="desc" class="input" placeholder="ej. Sueldo">
                     </div>
-                </div>
-            </form>
-            <div class="form_footer">
-                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Ingresos</strong> mediante Google App Scripts.</p>
-                <button type="submit" disabled id="income_submit_btn" class="submit_btn">Registrar Ingreso</button>
-                <p id="inc_result_p" class="result_p"></p>
-            </div>
-        </div>
-
-
-
-
-
-        <!-- OUTCOMES -->
-        <div id="form_outcomes_container" class="form_container">
-            <div class="form_header">
-                <h2 class="form_title">Nuevo Gasto</h2>
-                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto</strong> en Google Sheets</p>
-            </div>
-            <form action="" id="outcome_form" class="form">
-                <div class="input_container">
-                    <label for="desc" class="input_label">Descripción</label>
-                    <input id="out_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
-                </div>
-                <div class="input_container" id="account_dropdown_container">
-                    <label for="account" class="input_label">Cuenta</label>
-                    <div id="out_account" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="account_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
-                            <span class="dropdown_icon">👇</span>
-                        </div>
-                        <ul class="dropdown_menu">
-                            <li>Gastos Fijos</li>
-                            <li>Libertad Financiera</li>
-                            <li>Largo Plazo</li>
-                            <li>Educación</li>
-                            <li>Ocio</li>
-                            <li>Caridad</li>
-                        </ul>
+                    <div class="input_container">
+                        <label for="amount" class="input_label">Monto</label>
+                        <input id="inc_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
                     </div>
-                </div>
-                <div class="input_container">
-                    <label for="amount" class="input_label">Monto</label>
-                    <input id="out_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
-                </div>
-                <div class="input_container">
-                    <label for="category" class="input_label">Categoría</label>
-                    <div id="out_category" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
-                            <span class="dropdown_icon">👇</span>
+                    <div class="input_container">
+                        <label for="category" class="input_label">Categoría</label>
+                        <div id="inc_category" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
+                            <ul class="dropdown_menu">
+                                <li>💸 Sueldo</li>
+                                <li>💉 Tatuajes</li>
+                                <li>🏡 Renders</li>
+                                <li>❓ Otros</li>
+                            </ul>
                         </div>
-
-                        <ul class="dropdown_menu">
-                            <li>🍖 Alimentación</li>
-                            <li>🏪 Almacén</li>
-                            <li>🍸 Bar</li>
-                            <li>🍶 Bebidas</li>
-                            <li>🔁 Cambio de cuenta</li>
-                            <li>💌 Caridad</li>
-                            <li>📱 Celular</li>
-                            <li>🧼 Cuidado personal</li>
-                            <li>💸 Dólares</li>
-                            <li>🏛️ Facultad</li>
-                            <li>⚽ Fútbol</li>
-                            <li>💪 Gimnasio</li>
-                            <li>🍬 Golosinas</li>
-                            <li>🍦 Helado</li>
-                            <li>🔫 Impuestos</li>
-                            <li>💉 Insumos tatuajes</li>
-                            <li>🏪 Kiosco</li>
-                            <li>📚 Librería</li>
-                            <li>📖 Libros</li>
-                            <li>⛽ Nafta</li>
-                            <li>❓ Otros</li>
-                            <li>✂️ Peluquería</li>
-                            <li>🎁 Regalos</li>
-                            <li>🍽️ Restaurant</li>
-                            <li>👕 Ropa</li>
-                            <li>▶️ Suscripciones</li>
-                            <li>💳 Tarjeta de crédito</li>
-                            <li>🚌 Transporte</li>
-                            <li>🏖️ Vacaciones</li>
-                        </ul>
                     </div>
+                </form>
+                <div class="form_footer">
+                    <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Ingresos</strong> mediante Google App Scripts.</p>
+                    <button type="submit" disabled id="income_submit_btn" class="submit_btn">Registrar Ingreso</button>
+                    <p id="inc_result_p" class="result_p"></p>
                 </div>
-            </form>
-            <div class="form_footer">
-                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Gastos</strong> mediante Google App Scripts.</p>
-                <button type="submit" id="outcome_submit_btn" class="submit_btn">Registrar Gasto</button>
-                <p id="out_result_p" class="result_p"></p>
             </div>
-        </div>
 
 
 
 
 
-        <!-- CREDIT -->
-        <div id="form_credit_container" class="form_container">
-            <div class="form_header">
-                <h2 class="form_title">Nuevo Gasto con Tarjeta</h2>
-                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto con Tarjeta</strong> en Google Sheets</p>
-            </div>
-            <form action="" id="credit_form" class="form">
-                <div class="input_container">
-                    <label for="desc" class="input_label">Descripción</label>
-                    <input id="cre_desc" type="text" name="desc" class="input" placeholder="ej. Heladera">
+            <!-- OUTCOMES -->
+            <div id="form_outcomes_container" class="form_container">
+                <div class="form_header">
+                    <h2 class="form_title">Nuevo Gasto</h2>
+                    <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto</strong> en Google Sheets</p>
                 </div>
-                <div class="input_container" id="credit_dropdown_container">
-                    <label for="credit" class="input_label">Tarjeta</label>
-                    <div id="cre_card" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="credit_dropdown_label" class="dropdown_label">Seleccioná una tarjeta</span>
-                            <span class="dropdown_icon">👇</span>
+                <form action="" id="outcome_form" class="form">
+                    <div class="input_container">
+                        <label for="desc" class="input_label">Descripción</label>
+                        <input id="out_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
+                    </div>
+                    <div class="input_container" id="account_dropdown_container">
+                        <label for="account" class="input_label">Cuenta</label>
+                        <div id="out_account" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="account_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
+                            <ul class="dropdown_menu">
+                                <li>Gastos Fijos</li>
+                                <li>Libertad Financiera</li>
+                                <li>Largo Plazo</li>
+                                <li>Educación</li>
+                                <li>Ocio</li>
+                                <li>Caridad</li>
+                            </ul>
                         </div>
-                        <ul class="dropdown_menu">
-                            <li>VISA Santander 2777</li>
-                            <li>VISA Santander 7851</li>
-                            <li>American Express Santander 8092</li>
-                            <li>MasterCard MercadoPago 7618</li>
-                        </ul>
                     </div>
-                </div>
-                <div class="input_container">
-                    <label for="amount" class="input_label">Monto</label>
-                    <input id="cre_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
-                </div>
-                <div class="input_container">
-                    <label for="quotes" class="input_label">Cuotas</label>
-                    <input id="cre_quotes" type="text" inputmode="numeric" name="quotes" class="input" placeholder="ej. 3">
-                </div>
-                <div class="input_container">
-                    <label for="interest" class="input_label">Interés</label>
-                    <input id="cre_interest" type="text" inputmode="numeric" name="interest" class="input" placeholder="ej. 0">
-                </div>
-            </form>
-            <div class="form_footer">
-                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Tarjetas de Crédito</strong> mediante Google App Scripts.</p>
-                <button type="submit" id="credit_submit_btn" class="submit_btn">Registrar Gasto</button>
-                <p id="out_result_p" class="result_p"></p>
-            </div>
-        </div>
+                    <div class="input_container">
+                        <label for="amount" class="input_label">Monto</label>
+                        <input id="out_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
+                    </div>
+                    <div class="input_container">
+                        <label for="category" class="input_label">Categoría</label>
+                        <div id="out_category" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="dropdown_label" class="dropdown_label">Seleccioná una categoría</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
 
-
-
-        <!-- TRANSFERS -->
-        <div id="form_transfers_container" class="form_container">
-            <div class="form_header">
-                <h2 class="form_title">Nueva Transferencia</h2>
-                <p class="form_desc">Completá el formulario para cargar una nueva <strong>Transferencia</strong> en Google Sheets</p>
-            </div>
-            <form action="" id="transfers_form" class="form">
-                <div class="input_container" id="account_dropdown_container">
-                    <label for="account" class="input_label">Cuenta origen</label>
-                    <div id="tra_source_account" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="tra_source_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
-                            <span class="dropdown_icon">👇</span>
+                            <ul class="dropdown_menu">
+                                <li>🍖 Alimentación</li>
+                                <li>🏪 Almacén</li>
+                                <li>🍸 Bar</li>
+                                <li>🍶 Bebidas</li>
+                                <li>🔁 Cambio de cuenta</li>
+                                <li>💌 Caridad</li>
+                                <li>📱 Celular</li>
+                                <li>🧼 Cuidado personal</li>
+                                <li>💸 Dólares</li>
+                                <li>🏛️ Facultad</li>
+                                <li>⚽ Fútbol</li>
+                                <li>💪 Gimnasio</li>
+                                <li>🍬 Golosinas</li>
+                                <li>🍦 Helado</li>
+                                <li>🔫 Impuestos</li>
+                                <li>💉 Insumos tatuajes</li>
+                                <li>🏪 Kiosco</li>
+                                <li>📚 Librería</li>
+                                <li>📖 Libros</li>
+                                <li>⛽ Nafta</li>
+                                <li>❓ Otros</li>
+                                <li>✂️ Peluquería</li>
+                                <li>🎁 Regalos</li>
+                                <li>🍽️ Restaurant</li>
+                                <li>👕 Ropa</li>
+                                <li>▶️ Suscripciones</li>
+                                <li>💳 Tarjeta de crédito</li>
+                                <li>🚌 Transporte</li>
+                                <li>🏖️ Vacaciones</li>
+                            </ul>
                         </div>
-                        <ul class="dropdown_menu">
-                            <li>Gastos Fijos</li>
-                            <li>Libertad Financiera</li>
-                            <li>Largo Plazo</li>
-                            <li>Educación</li>
-                            <li>Ocio</li>
-                            <li>Caridad</li>
-                            <li>Balanz</li>
-                        </ul>
                     </div>
+                </form>
+                <div class="form_footer">
+                    <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Gastos</strong> mediante Google App Scripts.</p>
+                    <button type="submit" id="outcome_submit_btn" class="submit_btn">Registrar Gasto</button>
+                    <p id="out_result_p" class="result_p"></p>
                 </div>
-                <div class="input_container" id="account_dropdown_container">
-                    <label for="account" class="input_label">Cuenta destino</label>
-                    <div id="tra_dest_account" class="dropdown_container">
-                        <div class="dropdown_btn">
-                            <span id="tra_dest_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
-                            <span class="dropdown_icon">👇</span>
+            </div>
+
+
+
+
+
+            <!-- CREDIT -->
+            <div id="form_credit_container" class="form_container">
+                <div class="form_header">
+                    <h2 class="form_title">Nuevo Gasto con Tarjeta</h2>
+                    <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto con Tarjeta</strong> en Google Sheets</p>
+                </div>
+                <form action="" id="credit_form" class="form">
+                    <div class="input_container">
+                        <label for="desc" class="input_label">Descripción</label>
+                        <input id="cre_desc" type="text" name="desc" class="input" placeholder="ej. Heladera">
+                    </div>
+                    <div class="input_container" id="credit_dropdown_container">
+                        <label for="credit" class="input_label">Tarjeta</label>
+                        <div id="cre_card" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="credit_dropdown_label" class="dropdown_label">Seleccioná una tarjeta</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
+                            <ul class="dropdown_menu">
+                                <li>VISA Santander 2777</li>
+                                <li>VISA Santander 7851</li>
+                                <li>American Express Santander 8092</li>
+                                <li>MasterCard MercadoPago 7618</li>
+                            </ul>
                         </div>
-                        <ul class="dropdown_menu">
-                            <li>Gastos Fijos</li>
-                            <li>Libertad Financiera</li>
-                            <li>Largo Plazo</li>
-                            <li>Educación</li>
-                            <li>Ocio</li>
-                            <li>Caridad</li>
-                            <li>Balanz</li>
-                        </ul>
                     </div>
+                    <div class="input_container">
+                        <label for="amount" class="input_label">Monto</label>
+                        <input id="cre_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
+                    </div>
+                    <div class="input_container">
+                        <label for="quotes" class="input_label">Cuotas</label>
+                        <input id="cre_quotes" type="text" inputmode="numeric" name="quotes" class="input" placeholder="ej. 3">
+                    </div>
+                    <div class="input_container">
+                        <label for="interest" class="input_label">Interés</label>
+                        <input id="cre_interest" type="text" inputmode="numeric" name="interest" class="input" placeholder="ej. 0">
+                    </div>
+                </form>
+                <div class="form_footer">
+                    <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Tarjetas de Crédito</strong> mediante Google App Scripts.</p>
+                    <button type="submit" id="credit_submit_btn" class="submit_btn">Registrar Gasto</button>
+                    <p id="out_result_p" class="result_p"></p>
                 </div>
-                <div class="input_container">
-                    <label for="desc" class="input_label">Descripción</label>
-                    <input id="tra_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
+            </div>
+
+
+
+            <!-- TRANSFERS -->
+            <div id="form_transfers_container" class="form_container">
+                <div class="form_header">
+                    <h2 class="form_title">Nueva Transferencia</h2>
+                    <p class="form_desc">Completá el formulario para cargar una nueva <strong>Transferencia</strong> en Google Sheets</p>
                 </div>
-                <div class="input_container">
-                    <label for="amount" class="input_label">Monto</label>
-                    <input id="tra_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
+                <form action="" id="transfers_form" class="form">
+                    <div class="input_container" id="account_dropdown_container">
+                        <label for="account" class="input_label">Cuenta origen</label>
+                        <div id="tra_source_account" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="tra_source_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
+                            <ul class="dropdown_menu">
+                                <li>Gastos Fijos</li>
+                                <li>Libertad Financiera</li>
+                                <li>Largo Plazo</li>
+                                <li>Educación</li>
+                                <li>Ocio</li>
+                                <li>Caridad</li>
+                                <li>Balanz</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input_container" id="account_dropdown_container">
+                        <label for="account" class="input_label">Cuenta destino</label>
+                        <div id="tra_dest_account" class="dropdown_container">
+                            <div class="dropdown_btn">
+                                <span id="tra_dest_dropdown_label" class="dropdown_label">Seleccioná una cuenta</span>
+                                <span class="dropdown_icon">👇</span>
+                            </div>
+                            <ul class="dropdown_menu">
+                                <li>Gastos Fijos</li>
+                                <li>Libertad Financiera</li>
+                                <li>Largo Plazo</li>
+                                <li>Educación</li>
+                                <li>Ocio</li>
+                                <li>Caridad</li>
+                                <li>Balanz</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input_container">
+                        <label for="desc" class="input_label">Descripción</label>
+                        <input id="tra_desc" type="text" name="desc" class="input" placeholder="ej. Supermercado">
+                    </div>
+                    <div class="input_container">
+                        <label for="amount" class="input_label">Monto</label>
+                        <input id="tra_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
+                    </div>
+                </form>
+                <div class="form_footer">
+                    <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Transferencia</strong> mediante Google App Scripts.</p>
+                    <button type="submit" id="transfers_submit_btn" class="submit_btn">Registrar Transferencia</button>
+                    <p id="tra_result_p" class="result_p"></p>
                 </div>
-            </form>
-            <div class="form_footer">
-                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Transferencia</strong> mediante Google App Scripts.</p>
-                <button type="submit" id="transfers_submit_btn" class="submit_btn">Registrar Transferencia</button>
-                <p id="tra_result_p" class="result_p"></p>
             </div>
         </div>
     </main>

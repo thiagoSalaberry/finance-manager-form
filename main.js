@@ -3,13 +3,14 @@ import { switcher } from "./switcher.js";
 import { input } from "./input.js";
 import { dropdown } from "./dropdown.js";
 import { submitButton } from "./submitButton.js";
-import { errorMessage } from "./errorMessage.js";
 import { reproducirAudio } from "./audios.js";
 import { showToast } from "./toast.js";
+import { enableSwipe } from "./gestureSwitcher.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZv4Sx74uoYLzTqLKA1yLW3TIiiZ57iWT_YnaI6knh1-q24KrnjGS6K7SAd8JYzsiSjA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUXgvO8WyJRzuBibpkbgYa2nSOjE6iwtCVLWr3iBsxfsIRLj7Opkniqg7mVikAnRjokg/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
+    enableSwipe();
     lucide.createIcons();
 
     switcher();
