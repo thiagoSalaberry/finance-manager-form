@@ -7,7 +7,7 @@ import { errorMessage } from "./errorMessage.js";
 import { reproducirAudio } from "./audios.js";
 import { showToast } from "./toast.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywW5URMe8sqZ1U1p1Bv6eK-phQ7R7g_Ji6Zf_vp25vR3cZglxMP9nbpxJfH2urOanGTA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZv4Sx74uoYLzTqLKA1yLW3TIiiZ57iWT_YnaI6knh1-q24KrnjGS6K7SAd8JYzsiSjA/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
@@ -160,7 +160,80 @@ document.addEventListener("DOMContentLoaded", () => {
             })
     };
     submitButton("outcome_submit_btn", onSubmitOut, "Gasto");
-    // errorMessage("out_result_p", "Gasto")
+
+    // Credit
+    input("cre_desc");
+    dropdown("cre_card", "card");
+    input("cre_amount");
+    input("cre_quotes");
+    input("cre_interest");
+
+    const onSubmitCre = () => {
+        const currentState = state.getState();
+        const { desc, card, amount, quotes, interest } = currentState.forms.credit.form;
+
+        if(!desc || !card || !amount || !quotes || !interest) return;
+
+        const numericAmount = parseFloat(amount.replace('.', ','))
+        const formData = new URLSearchParams();
+        formData.append("type", "credit");
+        formData.append("desc", desc);
+        formData.append("card", card);
+        formData.append("amount", numericAmount);
+        formData.append("quotes", quotes);
+        formData.append("interest", interest);
+
+        state.setState({
+            ...currentState,
+            loading: true,
+            result: null,
+            errorMessage: ""
+        })
+
+        fetch(SCRIPT_URL, {method: "POST", body: formData})
+            .then(res => res.json())
+            .then(data => {
+                const newState = state.getState();
+
+                if(data.result == "success") {
+                    state.setState({
+                        ...newState,
+                        result: "success",
+                        loading: false
+                    })
+                    
+                    showToast("credit", numericAmount, card);
+
+                    reproducirAudio("gasto")
+                } else {
+                    state.setState({
+                        ...state.getState(),
+                        forms: {
+                            ...state.getState().forms,
+                            credit: {
+                                form: {
+                                    desc: "",
+                                    card: "",
+                                    amount: "",
+                                    quotes: "",
+                                    interest: ""
+                                }
+                            },
+                            loading: false
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                state.setState({
+                    ...currentState,
+                    result: "error",
+                    errorMessage: "❌ Ocurrió un error al registrar el Gasto con Tarjeta: " + error.message,
+                    loading: false
+                })
+            })
+    };
+    submitButton("credit_submit_btn", onSubmitCre, "Gasto con Tarjeta");
 
     // Transfers
     dropdown("tra_source_account", "source")

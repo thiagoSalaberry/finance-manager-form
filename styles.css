@@ -340,7 +340,7 @@ body {
     bottom: 20px;
     left: 20px;
     right: 20px; */
-    padding: 10px;
+    /* padding: 10px; */
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -348,24 +348,27 @@ body {
 }
 .navbar {
     width: 100%;
-    background: var(--bg);
+    background: var(--bg-light);
     display: flex;
-    gap: 5px;
-    padding: 6px;
-    border-radius: 12px;
-    border: 1px solid #E6E6E6;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 5px; */
+    padding: 20px 30px;
+    /* border-radius: 12px; */
+    border-top: 1px solid #E6E6E6;
 }
 .link_icon {
     width: 100%;
-    padding: 6px;
+    /* padding: 6px; */
     border: none;
     border-radius: 10px;
-    color: var(--text-light);
+    color: #AAA;
     background: none;
+    transition: all .2s;
 }
 .link_icon.current {
-    background: var(--bg-light);
-    box-shadow: var(--sh-s);
+    /* background: var(--bg-light); */
+    /* box-shadow: var(--sh-s); */
     color: var(--text);
 }
 

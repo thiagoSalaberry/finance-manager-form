@@ -20,14 +20,14 @@ export function input(id) {
         let value = e.target.value;
         let rawValue = value;
 
-        if(inputEl.id.includes("amount")) {
+        if(inputEl.id.includes("amount") || inputEl.id.includes("interest") || inputEl.id.includes("quotes")) {
             rawValue = value.replace(/\D/g, "");
 
             const formatted = rawValue
-                ? "$ " + rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ? rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".")
                 : "";
 
-            inputEl.value = formatted;
+            inputEl.value = inputEl.id.includes("amount") ? "$ " + formatted : formatted;
         }
 
         state.setState({

@@ -142,6 +142,56 @@
 
 
 
+
+
+        <!-- CREDIT -->
+        <div id="form_credit_container" class="form_container">
+            <div class="form_header">
+                <h2 class="form_title">Nuevo Gasto con Tarjeta</h2>
+                <p class="form_desc">Completá el formulario para cargar un nuevo <strong>Gasto con Tarjeta</strong> en Google Sheets</p>
+            </div>
+            <form action="" id="credit_form" class="form">
+                <div class="input_container">
+                    <label for="desc" class="input_label">Descripción</label>
+                    <input id="cre_desc" type="text" name="desc" class="input" placeholder="ej. Heladera">
+                </div>
+                <div class="input_container" id="credit_dropdown_container">
+                    <label for="credit" class="input_label">Tarjeta</label>
+                    <div id="cre_card" class="dropdown_container">
+                        <div class="dropdown_btn">
+                            <span id="credit_dropdown_label" class="dropdown_label">Seleccioná una tarjeta</span>
+                            <span class="dropdown_icon">👇</span>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>VISA Santander 2777</li>
+                            <li>VISA Santander 7851</li>
+                            <li>American Express Santander 8092</li>
+                            <li>MasterCard MercadoPago 7618</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input_container">
+                    <label for="amount" class="input_label">Monto</label>
+                    <input id="cre_amount" type="text" inputmode="numeric" name="amount" class="input" placeholder="$ 0.00">
+                </div>
+                <div class="input_container">
+                    <label for="quotes" class="input_label">Cuotas</label>
+                    <input id="cre_quotes" type="text" inputmode="numeric" name="quotes" class="input" placeholder="ej. 3">
+                </div>
+                <div class="input_container">
+                    <label for="interest" class="input_label">Interés</label>
+                    <input id="cre_interest" type="text" inputmode="numeric" name="interest" class="input" placeholder="ej. 0">
+                </div>
+            </form>
+            <div class="form_footer">
+                <p class="form_footer_desc">Los datos se enviarán a la hoja <strong>Tarjetas de Crédito</strong> mediante Google App Scripts.</p>
+                <button type="submit" id="credit_submit_btn" class="submit_btn">Registrar Gasto</button>
+                <p id="out_result_p" class="result_p"></p>
+            </div>
+        </div>
+
+
+
         <!-- TRANSFERS -->
         <div id="form_transfers_container" class="form_container">
             <div class="form_header">
@@ -211,6 +261,9 @@
             </button>
             <button id="out_switch_btn" class="link_icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote-arrow-down-icon lucide-banknote-arrow-down"><path d="M12 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5"/><path d="m16 19 3 3 3-3"/><path d="M18 12h.01"/><path d="M19 16v6"/><path d="M6 12h.01"/><circle cx="12" cy="12" r="2"/></svg>
+            </button>
+            <button id="cre_switch_btn" class="link_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card-icon lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
             </button>
             <button id="tra_switch_btn" class="link_icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-repeat-icon lucide-repeat"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>

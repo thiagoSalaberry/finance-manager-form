@@ -17,6 +17,15 @@ export const state = {
                     category: ""
                 }
             },
+            credit: {
+                form: {
+                    desc: "",
+                    card: "",
+                    amount: null,
+                    quotes: "",
+                    interest: ""
+                }
+            },
             transfers: {
                 form: {
                     source: "",
