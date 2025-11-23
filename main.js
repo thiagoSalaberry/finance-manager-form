@@ -10,7 +10,7 @@ import { enableSwipe } from "./gestureSwitcher.js";
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUXgvO8WyJRzuBibpkbgYa2nSOjE6iwtCVLWr3iBsxfsIRLj7Opkniqg7mVikAnRjokg/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
-    enableSwipe();
+    // enableSwipe();
     lucide.createIcons();
 
     switcher();
